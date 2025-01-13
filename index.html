@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Form</title>
+    <script type="module" src="./firebaseauth.js"></script>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f9ecef;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .login-container {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            padding-top: 40px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            max-width: 400px;
+            height: 400px;
+            text-align: center;
+        }
+
+        .login-container h2 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            position: relative;
+            text-align: left;
+
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 14px;
+            color: #666;
+            margin-left: 25%;
+        }
+
+        .form-group input {
+            width: 50%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 14px;
+            outline: none;
+            background: #fff !important;
+            color: #333;
+            transition: border-color 0.3s;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .form-group input:focus {
+            border-color: #007bff;
+        }
+
+        .password-toggle {
+            position: absolute;
+            right: 26%;
+            top: 70%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            font-size: 14px;
+            color: #007bff;
+        }
+
+        .login-container button {
+            background-color: #ffc0cb;
+            color: #333;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 50%;
+            margin-top: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            display: block;
+            margin: 20px auto 0 auto;
+        }
+
+        .login-container button:hover {
+            background-color: #ffb3c1;
+        }
+
+        .login-container .footer-text {
+            margin-top: 15px;
+            font-size: 14px;
+            color: #666;
+        }
+
+        .login-container .footer-text a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .login-container .footer-text a:hover {
+            text-decoration: underline;
+        }
+        #successDiv{
+            margin:20px auto;
+            width: fit-content;
+            background-color: rgba(157, 216, 157, 0.468);
+            padding: 10px;
+            border-radius: 5px;
+            opacity: 0;
+            transition: 2s ease;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h2>Register</h2>
+        <form>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="userEmail" name="email" placeholder="Enter your email" 
+                       pattern="^[a-zA-Z0-9._%+-]+@(gmail|yahoo|reddit)\.com$" 
+                       title="Please enter a valid email (e.g., user@gmail.com)" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="userPassword" name="password" placeholder="Enter your password" 
+                       pattern="^[a-zA-Z0-9@#]{1,8}$" 
+                       title="Password should contain only letters, numbers, and @# with a max of 8 characters" required>
+                <span class="password-toggle" onclick="togglePasswordVisibility()">Show</span>
+            </div>
+            <button type="submit" id="signUp">Sign Up</button>
+        </form>
+        <p class="footer-text">
+            Already have an account? <a href="./signIn.html">Sign In</a>
+        </p>
+
+        <div id="successDiv">Submitted Succesfully</div>
+    </div>
+
+
+    <script>
+        function togglePasswordVisibility() {
+            const passwordField = document.getElementById('UserPassword');
+            const toggle = document.querySelector('.password-toggle');
+
+            if (passwordField.type === 'password') {
+                passwordField.type = 'text';
+                toggle.textContent = 'Hide';
+            } else {
+                passwordField.type = 'password';
+                toggle.textContent = 'Show';
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+          const emailInput = document.getElementById("userEmail");
+           const passwordInput = document.getElementById("userPassword");
+
+              if (emailInput) emailInput.value = "";
+              if (passwordInput) passwordInput.value = "";
+             });
+
+    </script>
+</body>
+</html>
