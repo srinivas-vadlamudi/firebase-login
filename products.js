@@ -47,6 +47,7 @@ div2.append(i,btn)
 div.append(div1,div2)
 document.body.appendChild(div)
 
+
 // cat section 
 var catDiv=document.createElement("div")
 catDiv.className="catDiv"
@@ -100,7 +101,7 @@ cimgDiv3.append(cimg3,p3,cat1btn3);
 // Fourth cat image
 var cimgDiv4 = document.createElement("div");
 cimgDiv4.className="cimgDiv4"
-var cimg4 = document.createElement("img"); // Missing definition added here
+var cimg4 = document.createElement("img"); 
 cimg4.src = "https://images.unsplash.com/photo-1634799722361-de6122684698?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YnJpdGlzaCUyMHNob3J0JTIwY2F0fGVufDB8fDB8fHww";
 var p4=document.createElement("p")
 p4.innerText="$300"
@@ -109,10 +110,7 @@ cat1btn4.className="catbtn"
 cat1btn4.innerText="Add to Cart"
 cimgDiv4.append(cimg4,p4,cat1btn4);
 
-// Append all image divs to the main div
 catimgDiv.append(cimgDiv1, cimgDiv2, cimgDiv3, cimgDiv4);
-
-// Append the main div to the body
 document.body.appendChild(catimgDiv);
 
 // ---------------------------------------------------------------------------------------------------------------
@@ -176,10 +174,8 @@ cat1btn4.className="catbtn"
 cat1btn4.innerText="Add to Cart"
 cimgDiv4.append(cimg4,p4,cat1btn4);
 
-// Append all image divs to the main div
 catimgDiv.append(cimgDiv1, cimgDiv2, cimgDiv3, cimgDiv4);
 
-// Append the main div to the body
 document.body.appendChild(catimgDiv);
 
 
@@ -235,7 +231,7 @@ cimgDiv3.append(cimg3,p3,cat1btn3);
 // Fourth cat image
 var cimgDiv4 = document.createElement("div");
 cimgDiv4.className="cimgDiv4"
-var cimg4 = document.createElement("img"); // Missing definition added here
+var cimg4 = document.createElement("img"); 
 cimg4.src = "https://images.unsplash.com/photo-1534361960057-19889db9621e?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D";
 var p4=document.createElement("p")
 p4.innerText="$300"
@@ -244,38 +240,70 @@ cat1btn4.className="catbtn"
 cat1btn4.innerText="Add to Cart"
 cimgDiv4.append(cimg4,p4,cat1btn4);
 
-// Append all image divs to the main div
 catimgDiv.append(cimgDiv1, cimgDiv2, cimgDiv3, cimgDiv4);
 
-// Append the main div to the body
 document.body.appendChild(catimgDiv);
 
 var foot=document.createElement("div")
 foot.className="footer"
 var paraFoot=document.createElement("p")
-paraFoot.innerText="Done by Pinky & Team 28r : Ravi , Vinay , Yuvraj , Vijay , Ayesha , Srinivas"
-foot.appendChild(paraFoot)
+paraFoot.innerText="Done by Pinky & Team 28r"
+var name1=document.createElement("h4")
+name1.innerText="Ravi"
+var name2=document.createElement("h4")
+name2.innerText="Vinay"
+var name3=document.createElement("h4")
+name3.innerText="Yuvraj"
+var name4=document.createElement("h4")
+name4.innerText="Vijay"
+var name5=document.createElement("h4")
+name5.innerText="Ayesha"
+var name6=document.createElement("h4")
+name6.innerText="Srinivas"
+foot.append(paraFoot,name1,name2,name3,name4,name5,name6)
 document.body.appendChild(foot)
+
+var logout=document.createElement("div")
+logout.id="logoutMessage"
+logout.className="hidden"
+logout.innerText="Logging Out....."
+document.body.appendChild(logout)
 
 document.addEventListener("DOMContentLoaded", () => {
     const logoutButton = document.getElementById('logout');
+    const logoutMessage = document.getElementById('logoutMessage');
 
     if (logoutButton) {
         logoutButton.addEventListener('click', () => {
             console.log('Preparing to log out...');
 
-            // Add a delay of 2 seconds (2000 milliseconds) before signing out
+            // Show the "logging out" message
+            if (logoutMessage) {
+                logoutMessage.classList.remove('hidden');
+                logoutMessage.classList.add('visible');
+            }
+
+            // Add a delay of 2 seconds before signing out
             setTimeout(() => {
                 localStorage.removeItem('loggedInUserId');
                 signOut(auth)
                     .then(() => {
                         console.log('User signed out successfully');
+                        // Redirect to signup page after 2 seconds
                         window.location.href = 'index.html';
                     })
                     .catch((error) => {
-                        console.error('Error Signing out:', error);
+                        console.error('Error signing out:', error);
                     });
             }, 2000); // Delay of 2 seconds
+
+            // Hide the message after 2 seconds
+            setTimeout(() => {
+                if (logoutMessage) {
+                    logoutMessage.classList.remove('visible');
+                    logoutMessage.classList.add('hidden');
+                }
+            }, 2000);
         });
     } else {
         console.error('Logout button not found!');
