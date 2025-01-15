@@ -49,11 +49,11 @@
             margin-bottom: 8px;
             font-size: 14px;
             color: #666;
-            margin-left: 22%;
+            margin-left: 18%;
         }
 
         .form-group input {
-            width: 50%;
+            width: 60%;
             padding: 10px;
             border: 1px solid #ccc;
             border-radius: 8px;
@@ -68,16 +68,6 @@
 
         .form-group input:focus {
             border-color: #007bff;
-        }
-
-        .password-toggle {
-            position: absolute;
-            right: 26%;
-            top: 70%;
-            transform: translateY(-50%);
-            cursor: pointer;
-            font-size: 14px;
-            color: #007bff;
         }
 
         .login-container button {
@@ -130,7 +120,7 @@
         <form>
             <div class="form-group">
                 <label for="email">Email</label>
-                <input type="email" id="userEmail" name="email" placeholder="Enter your email" 
+                <input type="email" id="userEmail" name="email" placeholder="your email" 
                        pattern="^[a-zA-Z0-9._%+-]+@(gmail|yahoo|reddit)\.com$" 
                        title="Please enter a valid email (e.g., user@gmail.com)" required>
             </div>
@@ -150,6 +140,18 @@
 
 
     <script>
+        const form = document.getElementById("signUp");
+
+form.addEventListener("submit", (event) => {
+    // Check if the form is valid
+    if (!form.checkValidity()) {
+        event.preventDefault(); // Stop form submission
+        form.reportValidity();  // Trigger built-in validation messages
+    } else {
+        // If form is valid, proceed with submission
+        console.log("Form is valid. Submitting...");
+    }
+});
         document.addEventListener("DOMContentLoaded", () => {
           const emailInput = document.getElementById("userEmail");
            const passwordInput = document.getElementById("userPassword");

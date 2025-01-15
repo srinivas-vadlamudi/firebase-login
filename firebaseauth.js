@@ -17,6 +17,8 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
 
+
+
 // Show message function
 function showMessage(message) {
   const messageDiv = document.getElementById("successDiv");
@@ -92,5 +94,6 @@ if (signInButton) {
         
       }
     }
+    
   });
 }
