@@ -278,7 +278,7 @@ document.addEventListener("DOMContentLoaded", () => {
     onAuthStateChanged(auth, (user) => {
         if (!user) {
             console.log('User is not logged in. Redirecting to login...');
-            window.location.href = 'index.html'; // Redirect to login page
+            window.location.href = 'https://srinivas-vadlamudi.github.io/firebase-login/index.html'; // Redirect to login page
         } else {
             console.log('User is logged in:', user);
             productsPage.style.display = 'block'; // Show the products page
