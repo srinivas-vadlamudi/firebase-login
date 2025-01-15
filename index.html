@@ -22,12 +22,12 @@
         .login-container {
             background-image: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url('https://img.freepik.com/free-vector/abstract-colorful-low-poly-triangle-shapes_361591-3173.jpg?t=st=1736861718~exp=1736865318~hmac=3b999d7f4dc93926a3f8d3bc881d5278b2da6292b5785410a1f75d8e49471832&w=1380');
             border-radius: 15px;
-            padding-top: 40px;
+            padding-top: 30px;
             background-size: cover;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
             width: 100%;
             max-width: 330px;
-            height: 380px;
+            height: 388px;
             text-align: center;
         }
 
@@ -111,6 +111,20 @@
             opacity: 0;
             transition: 2s ease;
         }
+        .pass{
+            margin-top:-18px;
+            margin-left: 60px;
+            font-size:10px;
+        }
+        .password-toggle {
+        position: absolute;
+        right: 18%;
+        top: 60%;
+        transform: translateY(-50%);
+        cursor: pointer;
+        font-size: 14px;
+        color: #007bff;
+    }
     </style>
 </head>
 <body>
@@ -120,13 +134,15 @@
             <div class="form-group">
                 <label for="email">Email</label>
                 <input type="email" id="userEmail" name="email" placeholder="your email" 
-                       pattern="^[a-zA-Z0-9._%+-]+@(gmail|yahoo|reddit)\.com$" 
+                       pattern="^[a-zA-Z0-9._%+-]+@(gmail|yahoo)\.com$" 
                        title="Please enter a valid email (e.g., user@gmail.com)" required>
             </div>
             <div class="form-group">
                 <label for="password">Password</label>
                 <input type="password" id="userPassword" name="password" placeholder="Enter your password" 
-                       required>
+                       pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$" required>
+                       <span class="password-toggle" onclick="togglePasswordVisibility()">Show</span>
+                       <br><p class="pass">(password should contain letters and numbers)</p>
             </div>
             <button type="submit" id="signUp">Sign Up</button>
         </form>
@@ -137,9 +153,19 @@
         <div id="successDiv">Submitted Succesfully</div>
     </div>
 
-
     <script>
+        function togglePasswordVisibility() {
+            const passwordField = document.getElementById('userPassword');
+            const toggle = document.querySelector('.password-toggle');
 
-    </script>
+            if (passwordField.type === 'password') {
+                passwordField.type = 'text';
+                toggle.textContent = 'Hide';
+            } else {
+                passwordField.type = 'password';
+                toggle.textContent = 'Show';
+            }
+        }
+        </script>
 </body>
 </html>

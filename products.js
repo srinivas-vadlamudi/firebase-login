@@ -272,7 +272,20 @@ document.body.appendChild(logout)
 document.addEventListener("DOMContentLoaded", () => {
     const logoutButton = document.getElementById('logout');
     const logoutMessage = document.getElementById('logoutMessage');
+    const productsPage = document.getElementById('products-page');
 
+    // Check Auth State
+    onAuthStateChanged(auth, (user) => {
+        if (!user) {
+            console.log('User is not logged in. Redirecting to login...');
+            window.location.href = 'index.html'; // Redirect to login page
+        } else {
+            console.log('User is logged in:', user);
+            productsPage.style.display = 'block'; // Show the products page
+        }
+    });
+
+    // Logout Functionality
     if (logoutButton) {
         logoutButton.addEventListener('click', () => {
             console.log('Preparing to log out...');
@@ -285,36 +298,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
             // Add a delay of 2 seconds before signing out
             setTimeout(() => {
-                localStorage.removeItem('loggedInUserId');
                 signOut(auth)
                     .then(() => {
                         console.log('User signed out successfully');
-                        // Redirect to signup page after 2 seconds
-                        window.location.href = 'index.html';
+                        window.location.href = 'index.html'; 
                     })
                     .catch((error) => {
                         console.error('Error signing out:', error);
                     });
-            }, 2000); // Delay of 2 seconds
-
-            // Hide the message after 2 seconds
-            setTimeout(() => {
-                if (logoutMessage) {
-                    logoutMessage.classList.remove('visible');
-                    logoutMessage.classList.add('hidden');
-                }
             }, 2000);
         });
     } else {
         console.error('Logout button not found!');
     }
-
-    // Check Auth State
-    onAuthStateChanged(auth, (user) => {
-        if (!user) {
-            console.log('User is logged out');
-        } else {
-            console.log('User is logged in:', user);
-        }
-    });
 });
