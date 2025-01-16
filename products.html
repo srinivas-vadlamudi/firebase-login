@@ -134,12 +134,17 @@
         }
         @media screen and (width <=1000px)  {
             .navContainer{
-                justify-content:flex-start;
+                justify-content:space-around;
+                gap: 35px;
             }
-            .navContainer>div{
+            .navContainer>.div1{
             display: flex;
+            justify-content: flex-end;
             gap: 20px;
             width: 40%;
+        }
+        .navContainer>.div2{
+            justify-content: flex-end;
         }
         .catimgDiv{
             display: grid;
