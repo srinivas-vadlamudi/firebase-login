@@ -72,7 +72,7 @@
     .password-toggle {
         position: absolute;
         right: 18%;
-        top: 34%;
+        top: 30%;
         transform: translateY(-50%);
         cursor: pointer;
         font-size: 14px;
@@ -91,7 +91,7 @@
         margin-top: 20px;
         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
         display: block;
-        margin: 20px auto 0 auto;
+        margin: -12px auto 0 auto;
     }
 
     .login-container2 button:hover {
@@ -108,12 +108,24 @@
         }
         .pp{
             font-size: 14px;
-            margin-left: 55px;
+            margin-left: 35px;
         }
         .li{
             font-size: 14px;
-            margin-left: 90px;
+            margin-left: 35px;
             margin-top: -10px;
+        }
+        .sp{
+            font-weight: 600;
+        }
+        .bg
+        {
+            background-color: #ffb3c10c;
+            /* box-sizing: border-box; */
+            width: fit-content;
+            margin: 2px auto auto auto;
+            padding: 1px;
+            border-radius: 10px;
         }
 </style>
 </head>
@@ -132,9 +144,11 @@
                 <input type="password" id="signinPassword" name="password" placeholder="Enter your password" 
                  required>
                 <span class="password-toggle" onclick="togglePasswordVisibility()">Show</span>
-                <p class="pp">Use these demo credentials to log In :</p>
-                <p class="li">Email : demo@gmail.com <br> Password : abc123</p>
-                    
+                <div class="bg">
+                    <p class="pp">Use these demo credentials to log In :</p>
+                    <p class="li">Email : <span class="sp">example@gmail.com</span> <br> Password : <span class="sp">demo123</span></p>       
+                </div>
+
             </div>
             <button type="submit" id="userSignin">Sign In</button>
 
