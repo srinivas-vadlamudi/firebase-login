@@ -27,7 +27,7 @@
         box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
         width: 100%;
         max-width: 330px;
-        height: 380px;
+        height: 420px;
         text-align: center;
     }
 
@@ -72,7 +72,7 @@
     .password-toggle {
         position: absolute;
         right: 18%;
-        top: 70%;
+        top: 34%;
         transform: translateY(-50%);
         cursor: pointer;
         font-size: 14px;
@@ -99,12 +99,21 @@
     }
     #successDiv{
             margin:20px auto ;
-            width: 250px;
+            width: 300px;
             background-color: rgba(157, 216, 157, 0.468);
-            padding: 10px;
+            padding: 5px;
             border-radius: 5px;
             opacity: 0;
             transition: 2s ease;
+        }
+        .pp{
+            font-size: 14px;
+            margin-left: 55px;
+        }
+        .li{
+            font-size: 14px;
+            margin-left: 90px;
+            margin-top: -10px;
         }
 </style>
 </head>
@@ -123,6 +132,9 @@
                 <input type="password" id="signinPassword" name="password" placeholder="Enter your password" 
                  required>
                 <span class="password-toggle" onclick="togglePasswordVisibility()">Show</span>
+                <p class="pp">Use these demo credentials to log In :</p>
+                <p class="li">Email : demo@gmail.com <br> Password : abc123</p>
+                    
             </div>
             <button type="submit" id="userSignin">Sign In</button>
 
