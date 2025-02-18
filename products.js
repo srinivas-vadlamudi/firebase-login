@@ -256,8 +256,6 @@ var name3=document.createElement("h4")
 name3.innerText="Yuvraj"
 var name4=document.createElement("h4")
 name4.innerText="Vijay"
-var name5=document.createElement("h4")
-name5.innerText="Ayesha"
 var name6=document.createElement("h4")
 name6.innerText="Srinivas"
 foot.append(paraFoot,name1,name2,name3,name4,name5,name6)
